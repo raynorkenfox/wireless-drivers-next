@@ -2521,6 +2521,20 @@ enum nl80211_commands {
  *	unsolicited broadcast probe response. It is a nested attribute, see
  *	&enum nl80211_unsol_bcast_probe_resp_attributes.
  *
+ * @NL80211_ATTR_MULTIPLE_BSSID_NON_TRANSMITTING: Set the Non-Transmitted flag for this
+ *	BSSIDs beacon.
+ *
+ * @NL80211_ATTR_MULTIPLE_BSSID_PARENT: If this is a Non-Transmitted BSSID, define
+ *	the parent (transmitting) interface.
+ *
+ * @NL80211_ATTR_MULTIPLE_BSSID_INDEX: The index of this BSS inside the multi bssid
+ *	element.
+ *
+ * @NL80211_ATTR_MULTIPLE_BSSID_COUNT: The number of BSSs inside the multi bssid element.
+ *
+ * @NL80211_ATTR_MULTIPLE_BSSID_IES: The Elements that describe our multiple BSS group.
+ *	these get passed separately as the kernel might need to split them up for EMA VAP.
+ *
  * @NUM_NL80211_ATTR: total number of nl80211_attrs available
  * @NL80211_ATTR_MAX: highest attribute number currently defined
  * @__NL80211_ATTR_AFTER_LAST: internal use
@@ -3007,6 +3021,12 @@ enum nl80211_attrs {
 
 	NL80211_ATTR_UNSOL_BCAST_PROBE_RESP,
 
+	NL80211_ATTR_MULTIPLE_BSSID_NON_TRANSMITTING,
+	NL80211_ATTR_MULTIPLE_BSSID_PARENT,
+	NL80211_ATTR_MULTIPLE_BSSID_INDEX,
+	NL80211_ATTR_MULTIPLE_BSSID_COUNT,
+	NL80211_ATTR_MULTIPLE_BSSID_IES,
+
 	/* add attributes here, update the policy in nl80211.c */
 
 	__NL80211_ATTR_AFTER_LAST,
@@ -3069,6 +3089,8 @@ enum nl80211_attrs {
 #define NL80211_SCAN_RSSI_THOLD_OFF		-300
 
 #define NL80211_CQM_TXE_MAX_INTVL		1800
+
+#define NL80211_MULTIPLE_BSSID_IES_MAX		8
 
 /**
  * enum nl80211_iftype - (virtual) interface types
