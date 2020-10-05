@@ -4843,6 +4843,7 @@ void ieee80211_report_low_ack(struct ieee80211_sta *sta, u32 num_packets);
  *	should be ignored.
  * @multiple_bssid_offset: position of the multiple bssid element
  * @multiple_bssid_length: size of the multiple bssid element
+ * @mbssid_ie_offset: non_transmitted mbssid IE offsets
  */
 struct ieee80211_mutable_offsets {
 	u16 tim_offset;
@@ -4852,6 +4853,8 @@ struct ieee80211_mutable_offsets {
 
 	u16 multiple_bssid_offset;
 	u16 multiple_bssid_length;
+
+	u16 mbssid_ie_offset[32];
 };
 
 /**

@@ -490,13 +490,15 @@ struct ieee80211_supported_band {
  * struct ieee80211_multiple_bssid - AP settings for multi bssid
  *
  * @index: the index of this AP in the multi bssid group.
+ * @max_bssid_id: max bssid indicator.
  * @count: the total number of multi bssid peer APs.
  * @parent: a non-transmitted bssid has a transmitted parent
  * @non_transmitted: Is this a non-transmitted bssid
  */
 struct ieee80211_multiple_bssid {
 	u8 index;
-	u8 count;
+	u8 max_bssid_id;
+	u16 count;
 	u32 parent;
 	bool non_transmitted;
 };
